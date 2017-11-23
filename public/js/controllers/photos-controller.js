@@ -1,6 +1,7 @@
 angular.module('alurapic').controller('PhotosController', function($scope, $http) {
 
   $scope.photos = [];
+  $scope.filter = "";
 
   $http.get('v1/fotos').success(function(photos) {
     $scope.photos = photos;
