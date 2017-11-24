@@ -12,6 +12,6 @@
 
 <div class="row">
     <my-panel class="col-md-2 painel-animado" ng-repeat="photo in photos | filter: filter" title="{{photo.titulo}}">
-        <img class="img-responsive center-block" src="{{photo.url}}" alt="{{photo.titulo}}">
+        <my-photo url="{{photo.url}}" title="{{photo.titulo}}"></my-photo>
     </my-panel>
 </div>
