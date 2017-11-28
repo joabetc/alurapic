@@ -9,7 +9,8 @@ angular.module('alurapic', ['myDirectives', 'ngAnimate', 'ngRoute'])
         controller: 'PhotosController'
       })
       .when('/photos/new', {
-        templateUrl: 'partials/photo.html'
+        templateUrl: 'partials/photo.html',
+        controller: 'PhotoController'
       })
       .otherwise({
         redirectTo: '/photos'

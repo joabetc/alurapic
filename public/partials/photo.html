@@ -1,1 +1,25 @@
-<h1>Cadastro de Fotos</h1>
+<div class="page-header text-center">
+  <h1>{{photo.titulo}}</h1>
+</div>
+<form name="formulario" class="row" ng-submit="submit()">
+  <div class="col-md-6">
+    <div class="form-group">
+      <label>Título</label>
+      <input ng-model="photo.titulo" name="titulo" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>URL</label>
+      <input ng-model="photo.url" name="url" class="form-control">
+    </div>
+    <div class="form-group">
+      <label>Descrição</label>
+      <textarea ng-model="photo.descricao" name="descricao" class="form-control"></textarea>
+    </div>
+  
+    <button type="submit" class="btn btn-primary">Salvar</button>
+    <a href="/" class="btn btn-primary">Voltar</a>
+  </div>
+  <div class="col-md-6">
+    <my-photo url="{{photo.url}}" titulo="{{photo.titulo}}"></my-photo>
+  </div>
+</form>
