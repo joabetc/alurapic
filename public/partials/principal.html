@@ -23,6 +23,6 @@
     <my-panel class="col-md-2 painel-animado" ng-repeat="photo in photos | filter: filter" title="{{photo.titulo}}">
         <my-photo url="{{photo.url}}" title="{{photo.titulo}}"></my-photo>
         <a href="photos/edit/{{photo._id}}" class="btn btn-primary btn-block">Editar</a>
-        <button class="btn btn-danger btn-block" ng-click="remove(photo)">Remover</button>
+        <my-danger-button action="remove(photo)" caption="Remover"></my-danger-button>
     </my-panel>
 </div>

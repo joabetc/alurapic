@@ -4,7 +4,7 @@ angular
 
       var ddo = {};
 
-      ddo.restric = "AE";
+      ddo.restrict = "AE";
       
       ddo.scope = {
         title: '@'
@@ -19,7 +19,7 @@ angular
     .directive('myPhoto', function() {
       var ddo = {};
 
-      ddo.restric = "AE";
+      ddo.restrict = "AE";
 
       ddo.scope = {
         title: '@',
@@ -27,6 +27,20 @@ angular
       };
 
       ddo.template = '<img class="img-responsive center-block" ng-src="{{url}}" alt="{{titulo}}">';
+
+      return ddo;
+    })
+    .directive('myDangerButton', function() {
+      var ddo = {};
+
+      ddo.restrict = "E";
+
+      ddo.scope = {
+        caption: '@',
+        action: '&'
+      };
+
+      ddo.template = '<button class="btn btn-danger btn-block" ng-click="action(photo)">{{caption}}</button>';
 
       return ddo;
     });
