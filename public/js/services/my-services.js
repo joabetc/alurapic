@@ -6,3 +6,41 @@ angular.module('myServices', ['ngResource'])
       }
     });
   })
+  .factory('photoRegistration', function(photoResource, $q) {
+    var service = {};
+    service.insert = function(photo) {
+      return $q(function(resolve, reject) {
+        
+        if(photo._id) {
+          
+          photoResource.update({photoId: photo._id}, photo, function() {
+            resolve({
+              message: 'Foto ' + photo.titulo + ' atualizada com sucesso!',
+              insertion: false
+            });
+          }, function(error) {
+            console.log(error);
+            reject({
+              message: 'Não foi possível alterar a foto ' + photo.titulo
+            });
+          });
+
+        } else {
+
+          photoResource.save(photo, function() {
+            resolve({
+              message: 'Foto ' + photo.titulo + ' incluída com sucesso!',
+              insertion: true
+            }, function(erro) {
+              console.log(error);
+              reject({
+                message: 'Não foi possível incluir a foto ' + photo.titulo
+              });
+            });
+          })
+        }
+      });
+    };
+
+    return service;
+  });
