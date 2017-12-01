@@ -54,12 +54,9 @@ angular
       };
 
       ddo.link = function(scope, element) {
-        scope.$watch('focused', function() {
-          if(scope.focused) {
-            element[0].focus();
-            scope.focused = false;
-          }
-        });
+        scope.$on('recordedPhoto', function() {
+          element[0].focus();
+        })
       }
 
       return ddo;
