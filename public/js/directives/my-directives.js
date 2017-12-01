@@ -1,5 +1,5 @@
 angular
-  .module('myDirectives', [])
+  .module('myDirectives', ['myServices'])
     .directive('myPanel', function() {
 
       var ddo = {};
@@ -58,6 +58,23 @@ angular
           element[0].focus();
         })
       }
+
+      return ddo;
+    })
+    .directive('myTitles', function() {
+      var ddo = {}
+
+      ddo.restrict = 'E';
+
+      ddo.template = '<ul><li ng-repeat="titulo in titulos">{{titulo}}</li></ul>';
+
+      ddo.controller = function($scope, photoResource) {
+        photoResource.query(function(photos) {
+          $scope.titulos = photos.map(function(photo) {
+            return photo.titulo;
+          });
+        });
+      };
 
       return ddo;
     });
