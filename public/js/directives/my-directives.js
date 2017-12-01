@@ -43,4 +43,24 @@ angular
       ddo.template = '<button class="btn btn-danger btn-block" ng-click="action(photo)">{{caption}}</button>';
 
       return ddo;
+    })
+    .directive('myFocus', function() {
+      var ddo = {}
+
+      ddo.restrict = "A";
+
+      ddo.scope = {
+        focused: '='
+      };
+
+      ddo.link = function(scope, element) {
+        scope.$watch('focused', function() {
+          if(scope.focused) {
+            element[0].focus();
+            scope.focused = false;
+          }
+        });
+      }
+
+      return ddo;
     });
