@@ -21,7 +21,6 @@ angular.module('alurapic').controller('PhotoController', function($scope, photoR
         .then(function(data) {
           $scope.message = data.message;
           if (data.insertion) $scope.photo = {};
-          $scope.$broadcast('recordedPhoto');
         })
         .catch(function(data) {
           $scope.message = data.message;

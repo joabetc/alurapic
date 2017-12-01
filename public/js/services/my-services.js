@@ -6,14 +6,18 @@ angular.module('myServices', ['ngResource'])
       }
     });
   })
-  .factory('photoRegistration', function(photoResource, $q) {
+  .factory('photoRegistration', function(photoResource, $q, $rootScope) {
     var service = {};
+
+    var event = 'recordedPhoto';
+
     service.insert = function(photo) {
       return $q(function(resolve, reject) {
         
         if(photo._id) {
           
           photoResource.update({photoId: photo._id}, photo, function() {
+            $rootScope.$broadcast('recordedPhoto');
             resolve({
               message: 'Foto ' + photo.titulo + ' atualizada com sucesso!',
               insertion: false
@@ -28,6 +32,7 @@ angular.module('myServices', ['ngResource'])
         } else {
 
           photoResource.save(photo, function() {
+            $rootScope.$broadcast('recordedPhoto');
             resolve({
               message: 'Foto ' + photo.titulo + ' incluída com sucesso!',
               insertion: true
